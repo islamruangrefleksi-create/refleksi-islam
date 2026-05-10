@@ -1,0 +1,1183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-primary: #f1eaea;
+    --bg-secondary: #ffffff;
+    --text-primary: #636060;
+    --text-secondary: #b4b0b0;
+    --navbar-bg: #046651;
+    --navbar-text: #fdfdfd;
+    --accent-color: #14a084;
+    --accent-hover: #11c09d;
+    --card-bg: #f9f9f9;
+    --border-color: #ccc;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigasi */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--navbar-bg);
+    padding: 1.2rem 6%;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.959);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Animasi untuk logo */
+@keyframes glow {
+    from {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+    }
+}
+
+.logo {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 1);
+    color: #ffffff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--navbar-text);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #0d9292;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #fcfcfc;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 7px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-6px, -7px);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(255, 254, 254);
+    overflow: hidden;
+    background-color: #f7f7f7;
+}
+
+.bg-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Gelap untuk kontras teks */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 750px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    text-shadow: 2px 3px 6px rgba(99, 95, 95, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: rgb(0, 0, 0);
+    padding: 14px 36px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(54, 50, 50, 0.534);
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Bagian Galeri (Kisi-kisi) */
+.kisi-kisi {
+    padding: 90px 6%;
+}
+
+.quran-feature {
+    padding: 60px 6%;
+    background: linear-gradient(135deg, #05ca7f 0%, #013775 100%);
+}
+
+.quran-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 35px;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(6, 68, 47, 0.08);
+    text-align: center;
+}
+
+.quran-card h2 {
+    color: #045c49;
+    font-size: 2.3rem;
+    margin-bottom: 16px;
+}
+
+.quran-card p {
+    color: #27403c;
+    font-size: 1rem;
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.quran-card .btn {
+    padding: 14px 36px;
+}
+
+.prophets-feature {
+    padding: 60px 6%;
+    background: linear-gradient(135deg, #05ca7f 0%, #013775 100%);
+}
+
+.prophets-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 35px;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(143, 69, 44, 0.08);
+    text-align: center;
+}
+
+.prophets-card h2 {
+    color: #045c49;
+    font-size: 2.3rem;
+    margin-bottom: 16px;
+}
+
+.prophets-card p {
+    color: #27403c;
+    font-size: 1rem;
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.prophets-card .btn {
+    padding: 14px 36px;
+}
+
+.kisi-kisi h2 {
+    text-align: center;
+    color: #0c8b72;
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.kisi-kisi .subtitle {
+    text-align: center;
+    color: #030303;
+    margin-bottom: 55px;
+    font-size: 1.05rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background-color: rgb(68, 212, 176);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.89);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(19, 167, 142, 0.856);
+}
+
+.card-img {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    color: #000000;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.card-content p {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.inspirasi {
+    padding: 70px 6%;
+    background: linear-gradient(135deg, #09b47e 0%, #045191 100%);
+}
+
+.quote-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 35px;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(13, 99, 77, 0.12);
+    text-align: center;
+}
+
+.quote-header h2 {
+    color: #046651;
+    font-size: 2.1rem;
+    margin-bottom: 10px;
+}
+
+.quote-header p {
+    color: #27403c;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.quote-text {
+    font-size: 1.2rem;
+    color: #0d3c35;
+    margin-bottom: 30px;
+    line-height: 1.75;
+}
+
+.btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: #046651;
+    border: 2px solid #046651;
+    padding: 14px 34px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #046651;
+    color: #fdfcfc;
+}
+
+/* Halaman Quran */
+.quran-page {
+    padding: 20px 6%;
+}
+
+.quran-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.quran-header h1 {
+    color: #046651;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.quran-header p {
+    color: #636060;
+    font-size: 1.1rem;
+}
+
+.surah-selector {
+    margin-top: 20px;
+}
+
+.surah-selector label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.surah-selector select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.quran-content {
+    margin-top: 40px;
+}
+
+#ayat-container h2 {
+    text-align: center;
+    color: #046651;
+    margin-bottom: 30px;
+}
+
+.ayat {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.ayat-number {
+    font-weight: bold;
+    color: #046651;
+    margin-bottom: 10px;
+}
+
+.ayat-arab {
+    font-size: 1.5rem;
+    text-align: right;
+    direction: rtl;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.ayat-indo {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.quran-nav {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.quran-nav h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.quran-nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.quran-nav-links a {
+    text-decoration: none;
+    color: #046651;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #046651;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.quran-nav-links a:hover {
+    background-color: #046651;
+    color: white;
+}
+
+/* Sejarah Turunnya Quran */
+.quran-history {
+    margin-top: 40px;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.quran-history h2 {
+    color: #046651;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.quran-history p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* Halaman Para Nabi */
+.prophets-section {
+    padding: 90px 6%;
+    text-align: center;
+}
+
+.prophets-section h2 {
+    color: #0c8b72;
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.prophets-section .subtitle {
+    color: #000000;
+    margin-bottom: 55px;
+    font-size: 1.05rem;
+}
+
+.prophets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.prophet-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: rgb(68, 212, 176);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(15, 15, 15, 0.89);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.prophet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(19, 167, 142, 0.856);
+    background-color: #4ed3a0;
+}
+
+.prophet-card h3 {
+    color: #070602;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.prophet-card p {
+    color: #272626;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.prophet-detail-page {
+    padding: 90px 6%;
+}
+
+.prophet-detail-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 35px;
+    background: #fafafa;
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(13, 99, 77, 0.12);
+    text-align: left;
+}
+
+.prophet-detail-card h1 {
+    color: #046651;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.prophet-detail-card p {
+    color: #27403c;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    font-size: 1rem;
+}
+
+.prophet-detail-card .btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Halaman Artikel */
+.articles {
+    padding: 30px 6%;
+}
+
+.articles h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+    font-size: 2.1rem;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 560px;
+    padding: 14px 18px;
+    border: 2px solid #046651;
+    border-radius: 40px;
+    font-size: 1rem;
+    color: #426161;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #11ce9f;
+    box-shadow: 0 0 0 6px rgba(17, 206, 159, 0.12);
+}
+
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.card-artikel {
+    background: #11ce9f;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.card-artikel h3 {
+    margin-bottom: 12px;
+    color: #030303;
+}
+
+.card-artikel p {
+    color: #2d2e30;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.read-more {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Halaman Al-Qur'an */
+.quran-page {
+    padding: 70px 6%;
+}
+
+.quran-header {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.quran-header h1 {
+    color: #046651;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.quran-header p {
+    color: #2a4038;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.quran-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+.quran-nav a {
+    text-decoration: none;
+    color: #046651;
+    border: 1px solid #046651;
+    border-radius: 30px;
+    padding: 10px 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.quran-nav a:hover {
+    background-color: #046651;
+    color: #f7f6f6;
+}
+
+.juz-card {
+    background: #f7f5f5;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 24px;
+    box-shadow: 0 14px 35px rgba(2, 72, 51, 0.08);
+}
+
+.juz-card h2 {
+    color: #107857;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.juz-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+    color: #0f3e35;
+}
+
+.juz-card p {
+    color: #3c4c45;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.arabic-text {
+    direction: rtl;
+    text-align: right;
+    font-size: 1.3rem;
+    line-height: 2.2;
+    color: #046651;
+    font-weight: 500;
+    margin: 20px 0;
+    padding: 18px;
+    background-color: #ffffff;
+    border-right: 4px solid #14a084;
+    border-radius: 8px;
+    font-family: 'Traditional Arabic', 'Arial Unicode MS', sans-serif;
+}
+
+/* Footer */
+footer {
+    background-color: #046651;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 45px 0;
+    margin-top: 80px;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #1abc9c;
+}
+
+/* Perang Feature */
+.perang-feature {
+    padding: 60px 6%;
+    background: linear-gradient(135deg, #05ca7f 0%, #013775 100%);
+}
+
+.perang-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 35px;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(6, 68, 47, 0.08);
+    text-align: center;
+}
+
+.perang-card h2 {
+    color: #045c49;
+    font-size: 2.3rem;
+    margin-bottom: 16px;
+}
+
+.perang-card p {
+    color: #27403c;
+    font-size: 1rem;
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.perang-card .btn {
+    padding: 14px 36px;
+}
+
+/* Halaman Perang */
+.perang-section {
+    padding: 60px 6%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.perang-section h2 {
+    text-align: center;
+    color: #046651;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.perang-section .subtitle {
+    text-align: center;
+    color: #636060;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+.perang-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.perang-item {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 5px solid #046651;
+    box-shadow: 0 4px 15px rgba(4, 102, 81, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perang-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(4, 102, 81, 0.15);
+}
+
+.perang-item h3 {
+    color: #046651;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.perang-item p {
+    color: #27403c;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.perang-item p strong {
+    color: #046651;
+}
+
+.perang-summary {
+    background: linear-gradient(135deg, #05ca7f 0%, #013775 100%);
+    padding: 40px;
+    border-radius: 12px;
+    color: #ffffff;
+}
+
+.perang-summary h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.perang-summary ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.perang-summary li {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    line-height: 1.6;
+}
+
+.perang-summary strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+/* Wawasan Islam Section */
+.wawasan-islam {
+    padding: 80px 6%;
+    background: linear-gradient(135deg, #f0f8f7 0%, #e8f5f3 100%);
+}
+
+.wawasan-islam h2 {
+    text-align: center;
+    color: #046651;
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.wawasan-islam .subtitle {
+    text-align: center;
+    color: #636060;
+    margin-bottom: 50px;
+    font-size: 1.05rem;
+}
+
+.wawasan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wawasan-card-link {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.wawasan-card-link:hover {
+    transform: translateY(-5px);
+}
+
+.wawasan-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(4, 102, 81, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #14a084;
+    height: 100%;
+}
+
+.wawasan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(4, 102, 81, 0.15);
+}
+
+.wawasan-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.wawasan-card h3 {
+    color: #046651;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.wawasan-card p {
+    color: #636060;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.hadis-quote {
+    font-style: italic;
+    color: #0d3c35;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.hadis-source {
+    color: #14a084;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Testimoni Section */
+.testimoni-section {
+    padding: 80px 6%;
+    background: linear-gradient(135deg, #f9f9f9 0%, #f1f1f1 100%);
+}
+
+.testimoni-section h2 {
+    text-align: center;
+    color: #046651;
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.testimoni-section .subtitle {
+    text-align: center;
+    color: #636060;
+    margin-bottom: 50px;
+    font-size: 1.05rem;
+}
+
+.testimoni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimoni-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #14a084;
+}
+
+.testimoni-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.testimoni-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.testimoni-avatar {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #14a084 0%, #0d9292 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimoni-info h4 {
+    color: #046651;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.testimoni-info p {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.testimoni-stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.testimoni-text {
+    color: #636060;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* Aktivitas Section */
+.aktivitas-section {
+    padding: 80px 6%;
+    background: linear-gradient(135deg, #e8f5f3 0%, #f0f8f7 100%);
+}
+
+.aktivitas-section h2 {
+    text-align: center;
+    color: #046651;
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.aktivitas-section .subtitle {
+    text-align: center;
+    color: #636060;
+    margin-bottom: 50px;
+    font-size: 1.05rem;
+}
+
+.aktivitas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.aktivitas-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.aktivitas-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(4, 102, 81, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid #e0e0e0;
+}
+
+.aktivitas-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(4, 102, 81, 0.15);
+    border-color: #14a084;
+}
+
+.aktivitas-badge {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.aktivitas-card h3 {
+    color: #046651;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.aktivitas-detail {
+    color: #636060;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.aktivitas-detail strong {
+    color: #046651;
+    font-weight: 700;
+}
+
+.aktivitas-desc {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        z-index: 200;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 73px;
+        left: -100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        text-align: center;
+        transition: left 0.4s ease, opacity 0.4s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .nav-links.active {
+        left: 0;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .nav-links li {
+        margin: 1.2rem 0;
+    }
+
+    .nav-links li a {
+        color: #046651;
+        font-size: 1.05rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.1rem;
+    }
+}
